@@ -38,6 +38,26 @@ public class Server {
 		}
 	}
 	
+	public class ListFiles implements Runnable{
+		public void run(){
+			File f = new File("C:/Users/Dara/workspace/OOP2016Project/myFiles");
+			File[] fNames;
+			
+			try{
+				
+				//f = 
+				
+				fNames = f.listFiles();
+				
+				for(File fName:fNames){
+					System.out.println(fName);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	private class Request implements Runnable{
 		private Socket sock;
 		

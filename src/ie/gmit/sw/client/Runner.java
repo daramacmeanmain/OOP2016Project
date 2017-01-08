@@ -11,6 +11,7 @@ public class Runner{
 		UserInterface ui = new UserInterface();
 		Parsetor prs = new Parsetor();
 		XMLParser xml = new XMLParser(prs);
+		Server sv = new Server();
 		xml.run();
 		//Server.Listener ls = sv.new Listener();
 		//Connection con = new Connection();
@@ -24,12 +25,18 @@ public class Runner{
 			ui.prompt();
 			
 			if(ui.select == 1){
-				Server sv = new Server();
+				//Server sv = new Server();
 				Connection con = new Connection();
 				System.out.println(prs);
 			}
 			
 			else if(ui.select == 2){
+				System.out.println("Files Available");
+				Server.ListFiles lf = sv.new ListFiles();
+				lf.run();
+			}
+			
+			else if(ui.select == 3){
 				
 			}
 		}
