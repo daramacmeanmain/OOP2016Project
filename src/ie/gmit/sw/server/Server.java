@@ -47,7 +47,7 @@ public class Server {
 		
 		public void run() {
 			try{
-				System.out.println("Success");
+				System.out.println();
 			}catch (Exception e) {
             	System.out.println("Error processing request from " + sock.getRemoteSocketAddress());
             	e.printStackTrace();
