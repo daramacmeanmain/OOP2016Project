@@ -7,6 +7,7 @@ public class XMLParser {
 	
 	private Parsetor prs;
 	
+	//Constructor
 	public XMLParser(Parsetor prs){
 		super();
 		this.prs = prs;
@@ -14,33 +15,29 @@ public class XMLParser {
 	
 	public void run() throws Throwable{
 		
+		//Create DOM tree
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.parse(Parsetor.CONFIG_FILE);
-
-		Element root = doc.getDocumentElement(); //Get the root of the node tree
-		NodeList children = root.getChildNodes(); //Get the child node of the root
 		
+		
+		Element root = doc.getDocumentElement();//get root
+		NodeList children = root.getChildNodes();//get child
+		
+		//find elements in the tree
 		for (int i = 0; i < children.getLength(); i++){
 			
 			Node next = children.item(i); 
 			
+			//Parse username attribute
+			prs.setUsername(root.getAttribute("username"));
+			
+			//Parse elements
 			if (next instanceof Element){
 				
 				Element e = (Element) next;
 				
-				if (e.getNodeName().equals("client-config")){
-					
-					NamedNodeMap atts = e.getAttributes();
-					
-					for (int j = 0; j < atts.getLength(); j++){
-						if (atts.item(j).getNodeName().equals("username")){
-							prs.setUsername(atts.item(j).getNodeValue());
-						}
-					}
-				}
-				
-				else if (e.getNodeName().equals("server-host")){
+				if (e.getNodeName().equals("server-host")){
 					prs.setHost(e.getFirstChild().getNodeValue());
 				}
 				
@@ -54,7 +51,8 @@ public class XMLParser {
 			}
 		}
 	}
-
+	
+	//Parsetor Get and Set
 	public Parsetor getPrs() {
 		return prs;
 	}

@@ -1,16 +1,16 @@
 package ie.gmit.sw.client;
 
-import java.io.*;
 import java.net.*;
 
 public class Connection {
 	public Connection(){
+		//Create connection
 		new Thread(new Runnable(){
 			public void run() { 
 				try {
 					Socket s = new Socket("localhost", 7777);
 					
-					System.out.println("Connected to server");
+					System.out.println("Connected to server");	
 					
 					s.close();
 					
@@ -23,8 +23,8 @@ public class Connection {
 			
 		}
 	
-	public class DownloadFiles implements Runnable{
-		final String request = "GET /hello.txt HTTP/1.1\n\n";
+	/*public class DownloadFiles implements Runnable{
+		//final String request = "GET C:/Users/Dara/workspace/OOP2016Project/myFiles/hello.txt HTTP/1.1\n\n";
 		public void run(){
 			
 			try{
@@ -35,13 +35,13 @@ public class Connection {
 				out.flush(); 
 				
 				s.close(); 
-			} catch (Exception e) { //Deal with the error here. A try/catch stops a programme crashing on error  
+			} catch (Exception e) { 
 				System.out.println("Error: " + e.getMessage());
 			}
 			
 			
 			
 		}
-	}
+	}*/
 
 }

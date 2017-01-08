@@ -4,16 +4,16 @@ public class Parsetor {
 	
 	public static final String CONFIG_FILE="client-conf.xml";
 	private String username;
-	private String host;
+	public static String host;
 	private int port;
 	private String dir;
 	
-	
+	//Constructor
 	public Parsetor(){
 		super();
 	}
 
-
+	//Gets and Sets
 	public String getUsername() {
 		return username;
 	}
@@ -53,6 +53,7 @@ public class Parsetor {
 		this.dir = dir;
 	}
 	
+	//Output
 	public String toString(){
 		return "username = " + username + "\nhost = " + host + "\nport = " + port + "\ndirectory = " + dir;
 	}

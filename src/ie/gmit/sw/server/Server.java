@@ -11,6 +11,8 @@ public class Server {
 	
 	public Server(){
 		try{
+			
+			//Start the server
 			ss = new ServerSocket(SERVER_PORT);
 			
 			Thread server = new Thread(new Listener(), "Web Server Listener");
@@ -38,14 +40,13 @@ public class Server {
 		}
 	}
 	
+	//List the files available on the server
 	public class ListFiles implements Runnable{
 		public void run(){
 			File f = new File("C:/Users/Dara/workspace/OOP2016Project/myFiles");
 			File[] fNames;
 			
 			try{
-				
-				//f = 
 				
 				fNames = f.listFiles();
 				
@@ -58,16 +59,26 @@ public class Server {
 		}
 	}
 	
-	private class Request implements Runnable{
+	public class Request implements Runnable{
 		private Socket sock;
 		
-		private Request(Socket request) {
+		public Request(Socket request) {
 			this.sock = request;
 		}
 		
 		public void run() {
 			try{
+				
+				/*ObjectInputStream in = new ObjectInputStream(sock.getInputStream());
+                Object command = in.readObject();
+                System.out.println(command);
+                
+                ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream());
+                out.writeObject("C:/Users/Dara/workspace/OOP2016Project/myFiles/hello.txt");
+                out.flush();
+                out.close();*/
 				System.out.println();
+                
 			}catch (Exception e) {
             	System.out.println("Error processing request from " + sock.getRemoteSocketAddress());
             	e.printStackTrace();
